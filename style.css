@@ -1,1 +1,8 @@
 /* style file  */
+html {
+  background-color:#fafafa;
+}
+
+lable {
+  font-family: 'Roboto Mono', monospace;
+}
