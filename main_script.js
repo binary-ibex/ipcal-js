@@ -11,7 +11,7 @@ function user_input() {
   var ip_address = variable.match(regex1);
   var network_mask = variable.match(regex2);
 
-  //only process input if bot ip and network mask is present
+  //only process input if both the ip and the network mask is present
   if (ip_address!=null & network_mask!=null) {
     ip_address = str_to_int(ip_address[0].split('.'));
     network_mask = network_mask[0].slice(1,);
