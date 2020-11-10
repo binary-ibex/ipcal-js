@@ -1,8 +1,100 @@
-/* style file  */
-html {
-  background-color:#fafafa;
-}
 
+* {
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  
+}
+html {
+  background-color: #fafafa;
+}
 lable {
   font-family: 'Roboto Mono', monospace;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+h1{
+  font-family: 'Roboto Mono', monospace;
+  text-align:center;
+}
+
+.submit__button {
+  text-align:center;
+  
+}
+#submit-button {
+  font-family: 'Roboto Mono', monospace;
+  font-weight:700;
+}
+
+.input__field {
+  text-align:center;
+  padding:20px;
+}
+
+.lable__field {
+  text-align:center;
+  padding: 20px
+}
+
+#input_ip {
+  width: 550px;
+  padding:20px;
+  font-size: 18px;
+  font-family: 'Roboto Mono', monospace;
+  border:none;
+  border:2px solid #ff99c0;
+}
+
+.input__field {
+  font-family: 'Roboto Mono', monospace;
+}
+
+
+#submit-button {
+  width:150px;
+  padding: 15px;
+  border: none;
+  border:2px solid #ff99c0;
+  border-radius: 1em;
+}
+
+#submit-button:hover {
+  background-color: #ff99c0;
+  color: #fff;
+  border:2px solid #fff;
+}
+
+
+/* format the output */
+
+#output {
+  margin: 20px auto;
+  max-width: 600px;
+}
+
+#error_output {
+  margin: 20px auto;
+  max-width: 600px;
+}
+
+#output pre {
+  font-size: 16px;
+  padding: 20px;
+  line-height: 2em;
+  background-color: #b5ffbf;
+  border: 2px solid #1fff3d;
+}
+
+#error_output {
+  font-size: 16px;
+  padding: 20px;
+  line-height: 2em;
+  overflow-x:scroll;
+  background-color: #b5ffbf;
+  border: 2px solid #1fff3d;
 }

@@ -8,14 +8,25 @@
   </head>
   <body>
     <div class="main">
+      <h1>
+        IPcal-JS
+      </h1>
       <form>
-    <lable>Enter IP in cidr format </lable>
-    <input type="text" id="input_ip" value="" placeholder="e.g. 192.168.43.1/24">
-    <input type="button" value="Submit" onclick="user_input()"/>
+        <div class='lable__field'>
+          <lable>Enter IP in cidr format </lable>
+        </div>
+        <div class='input__field'>
+          <input type="text" id="input_ip" value="" placeholder="e.g. 192.168.43.1/24">
+        </div>
+        <div class='submit__button'>
+          <input type="button" id='submit-button' value="Submit" onclick="user_input()"/>
+        </div>
       </form>
     </div>
-    <div id="error_output"></div>
-    <div id="output"></div>  
+    <div id="error_output">
+    </div>
+    <div id="output">
+    </div>  
   <script src="main_script.js"></script>
   </body>
 </html>

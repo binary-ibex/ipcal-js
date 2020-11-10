@@ -3,6 +3,8 @@ var error_var = document.getElementById('error_output');
 var output_var = document.getElementById('output');
 const zeroPad = (num, places) => String(num).padStart(places, '0');
 
+error_var.style.display = "none";
+output_var.style.display = "none";
 //data for calculation
 
 network_lower = {
@@ -107,9 +109,13 @@ function user_input() {
 
 
 function error_output() {
-  output_var.innerHTML = ""
-  error_var.innerHTML = "";
-  error_var.innerHTML = "Error in IP address"
+  output_var.style.display = "none";
+  error_var.style.display = "block";
+  error_var.innerHTML = `
+<pre>
+Error : IP address is not in correct format 
+</pre>
+  `
 }
 
 
@@ -216,6 +222,8 @@ function usable_address(ip_first, ip_last , sub_range) {
 
 // main rendering method
 function render_output(ip_address, sub_range) {
+  error_var.style.display = "none";
+  output_var.style.display = "block";
 	const Host_address = ip_address.join('.');
 	var dec_hex = dec_hex_address(ip_address);
 	const Host_address_in_decimal  = dec_hex[0];
@@ -229,4 +237,19 @@ function render_output(ip_address, sub_range) {
 	const Addresses_in_network = address_in_network(sub_range);
 	var usable_add_range = usable_address(net_add[0], net_add[1] , sub_range)
 
+  output_var.innerHTML = `
+<pre>
+Host address		- ${Host_address}
+Host address (decimal)	- ${Host_address_in_decimal}
+Host address (hex)	- ${Host_address_in_hex}
+Network address		- ${Network_address}
+Network mask		- ${Network_mask}
+Network mask (bits)	- ${Network_mask_bits}
+Network mask (hex)	- ${Network_mask_hex}
+Broadcast address	- ${Broadcast_address}
+Addresses in network	- ${Addresses_in_network}
+Network range		- ${net_add[0].join('.')} - ${net_add[1].join('.')}
+Usable range		- ${usable_add_range[0]} - ${usable_add_range[1]}
+</pre>
+  `
 }
