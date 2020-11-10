@@ -7,11 +7,15 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <form>
-  <lable>Enter IP in cidr format </lable>
-  <input type="text" id="input_ip" value="" placeholder="e.g. 192.168.43.1/24">
-  <input type="button" value="Submit" onclick="user_input()"/>
-    </form>
+    <div class="main">
+      <form>
+    <lable>Enter IP in cidr format </lable>
+    <input type="text" id="input_ip" value="" placeholder="e.g. 192.168.43.1/24">
+    <input type="button" value="Submit" onclick="user_input()"/>
+      </form>
+    </div>
+    <div id="error_output"></div>
+    <div id="output"></div>  
   <script src="main_script.js"></script>
   </body>
 </html>
