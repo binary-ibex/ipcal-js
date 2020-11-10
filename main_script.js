@@ -1,7 +1,7 @@
 // function handel user input and validation
 var error_var = document.getElementById('error_output');
 var output_var = document.getElementById('output');
-
+const zeroPad = (num, places) => String(num).padStart(places, '0');
 
 //data for calculation
 
@@ -92,7 +92,7 @@ function user_input() {
     network_mask = network_mask[0].slice(1,);
     //validate input
     if (validate(ip_address, network_mask)) {
-      correct_output();
+      render_output(ip_address, network_mask);
     }
     else {
       error_output();
@@ -109,7 +109,7 @@ function user_input() {
 
 function correct_output() {
   output_var.innerHTML = ""
-  error_var.innerHTML = " ";
+  error_var.innerHTML = "";
   output_var.innerHTML = "IP address is correct"
 }
 
@@ -152,4 +152,90 @@ function validate(ip_address, network_mask) {
   else {
     return true;
   }
+}
+
+
+// main logic area
+
+function network_range(ip_address, sub_range) {
+  // return the network range
+  let network_first_address = []
+  for(let i=0;i<4;i++) {
+    network_first_address[i] = network_lower[sub_range][i] & ip_address[i];
+  }
+
+  let network_last_address = []
+  for(let i=0;i<4;i++) {
+    network_last_address[i] = network_higher[sub_range][i] | ip_address[i];
+  }
+return [network_first_address, network_last_address];
+}
+
+// return number of addresses in the given network range
+function address_in_network(sub_range) {
+  return 2**(32-sub_range)
+}
+
+
+//network mask in hex
+function network_mask_hex(sub_range) {
+	var total = 0
+	for(let i=0;i<sub_range;i++) {
+		total += 2**(31-i)
+	}
+	return total.toString(16)
+}
+
+function bin_cal(bin_number) {
+
+}
+
+// return the decimal and hex address
+function dec_hex_address(ip_address) {
+
+	var number = zeroPad(ip_address[0].toString(2),8) + zeroPad(ip_address[1].toString(2),8) + zeroPad(ip_address[2].toString(2),8) + zeroPad(ip_address[3].toString(2),8)
+
+	var number = number.split('').reverse();
+
+	var total = 0;
+	for(let i=0;i<32;i++) {
+		total += Number(number[i])*2**i;
+	}
+	return [total, total.toString(16)]
+}
+
+
+//return the usable address range
+
+function usable_address(ip_first, ip_last , sub_range) {
+
+	if (sub_range<31) {
+
+		const usable_first = [...ip_first];
+		const usable_last = [...ip_last];
+		usable_first[3] += 1;
+		usable_last[3] -= 1;
+
+		return [usable_first.join('.'), usable_last.join('.')];
+	}
+
+	return [null, null];
+
+}
+
+// main rendering method
+function render_output(ip_address, sub_range) {
+	const Host_address = ip_address.join('.');
+	var dec_hex = dec_hex_address(ip_address);
+	const Host_address_in_decimal  = dec_hex[0];
+	const Host_address_in_hex = dec_hex[1];
+	var net_add = network_range(ip_address, sub_range);
+	const Network_address = net_add[0].join('.');
+	const Network_mask = network_lower[sub_range];
+	const Network_mask_bits = sub_range;
+	const Network_mask_hex = network_mask_hex(sub_range);
+	const Broadcast_address = net_add[1].join('.');
+	const Addresses_in_network = address_in_network(sub_range);
+	var usable_add_range = usable_address(net_add[0], net_add[1] , sub_range)
+
 }
