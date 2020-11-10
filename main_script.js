@@ -105,13 +105,6 @@ function user_input() {
 
 }
 
-//print output on the page
-
-function correct_output() {
-  output_var.innerHTML = ""
-  error_var.innerHTML = "";
-  output_var.innerHTML = "IP address is correct"
-}
 
 function error_output() {
   output_var.innerHTML = ""
@@ -133,8 +126,6 @@ function str_to_int(arr) {
 
 //function to validate ip
 function validate(ip_address, network_mask) {
-  console.log(ip_address);
-  console.log(network_mask);
   let flag_1 = 0;
   let flag_2 = 0;
   for(let i=0;i<4;i++) {
