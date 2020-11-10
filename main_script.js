@@ -113,7 +113,7 @@ function error_output() {
   error_var.style.display = "block";
   error_var.innerHTML = `
 <pre>
-Error : IP address is not in correct format 
+Error : IP address is not in correct format
 </pre>
   `
 }
@@ -243,7 +243,7 @@ Host address		- ${Host_address}
 Host address (decimal)	- ${Host_address_in_decimal}
 Host address (hex)	- ${Host_address_in_hex}
 Network address		- ${Network_address}
-Network mask		- ${Network_mask}
+Network mask		- ${Network_mask.join('.')}
 Network mask (bits)	- ${Network_mask_bits}
 Network mask (hex)	- ${Network_mask_hex}
 Broadcast address	- ${Broadcast_address}
