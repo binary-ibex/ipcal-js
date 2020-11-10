@@ -1,5 +1,8 @@
 # ipcal-js
-simple ip4 calculator
+
+Simple ip calculator provides necessary information about the ip address, current it support only IPv4. 
+
+![ipcal-js](images/ipcal-js.png)
 
 Link to visit page:
 
